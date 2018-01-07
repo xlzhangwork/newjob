@@ -1,0 +1,6 @@
+server:
+  port: 8080
+girl:
+  cup: A
+  age: 18
+  content: "${girl.cup}}"
