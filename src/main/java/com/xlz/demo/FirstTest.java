@@ -3,10 +3,7 @@ package com.xlz.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
@@ -19,8 +16,8 @@ public class FirstTest {
     @Value("${girl.cup}")
     private String cup;
 
-    @RequestMapping(value =  {"/hello","/hi/{id}"}, method = RequestMethod.GET)
-    public String sayHello(@PathVariable("id") Integer id){
+    @GetMapping(value =  {"/hello","/hi"})
+    public String sayHello(@RequestParam(value = "id", required = false, defaultValue = "0") Integer id){
         System.out.println("Hello" + "\n");
         System.out.println(girlProperties.getAge() + cup);
         return "id: " + id;
